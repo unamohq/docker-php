@@ -1,9 +1,8 @@
 FROM php:7.2-cli-stretch
 
-ENV BUILD_DEPS wget gcc make autoconf
 RUN apt-get update \
     && mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
-    && apt-get install -y $BUILD_DEPS python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip
+    && apt-get install -y wget gcc cmake g++ make autoconf build-essential python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip
 
 RUN mkdir /tmp/wait-for-it \
     && wget https://github.com/vishnubob/wait-for-it/archive/54d1f0bfeb6557adf8a3204455389d0901652242.zip -O wait-for-it.zip \
@@ -39,7 +38,5 @@ RUN cd /tmp \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');" \
     && chmod a+x /usr/local/bin/composer
-
-RUN apt-get autoremove -y $BUILD_DEPS
 
 VOLUME ["/app"]
