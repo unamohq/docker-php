@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+usage()
+{
+    cat << USAGE >&2
+Usage:
+    monitor-norify name
+USAGE
+    exit 1
+}
+
+if [ $# -ne 1 ]; then
+	usage
+fi
+
+NAME=$1
+FILE=/Users/marcinkniazuk/Documents/tmp/monitor/${NAME}
+if [ -f "$FILE" ]; then
+	echo "Already notified"
+	exit 1
+fi
+
+echo "Notified $NAME"
+touch $FILE
