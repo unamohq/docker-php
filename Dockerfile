@@ -7,7 +7,8 @@ RUN apt-get update \
 VOLUME ["/monitor"]
 COPY monitor-wait /bin/monitor-wait
 COPY monitor-notify /bin/monitor-notify
-RUN chmod a+x /bin/monitor-wait /bin/monitor-notify
+COPY monitor-test /bin/monitor-test
+RUN chmod a+x /bin/monitor-wait /bin/monitor-notify /bin/monitor-test
 
 COPY wait-for-it /bin/wait-for-it
 RUN chmod a+x /bin/wait-for-it

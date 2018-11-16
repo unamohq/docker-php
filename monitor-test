@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+usage()
+{
+    cat << USAGE >&2
+Usage:
+    monitor-test name
+USAGE
+    exit 1
+}
+
+if [ $# -ne 1 ]; then
+	usage
+fi
+
+dir=/monitor
+name=$1
+file=${dir}/${name}
+if [ -f "$FILE" ]; then
+	echo "Succesfully tested ${name}"
+	exit 0
+else
+	echo "Failed testing ${name}"
+	exit 1
+fi

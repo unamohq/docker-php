@@ -7,4 +7,4 @@ Official php:7.2-stretch image with some extras:
 - Git
 - Composer
 - [wait-for-it](https://github.com/vishnubob/wait-for-it)
-- `monitor-wait` and `monitor-notify` scripts useful for synchronizing containers in docker compose
+- `monitor-wait`, `monitor-notify` and `monitor-test` scripts useful for synchronizing containers in docker compose
