@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
+set -e
+
 usage()
 {
     cat << USAGE >&2
 Usage:
-    monitor-wait name
+    monitor-wait name ...
 USAGE
     exit 1
 }
 
-if [ $# -ne 1 ]; then
+if [ $# -lt 1 ]; then
 	usage
 fi
 
-NAME=$1
-FILE=/monitor/${NAME}
-if [ -f "$FILE" ]; then
-	echo "Already notified"
-	exit 1
-fi
+dir=/monitor
 
-echo "Waiting for $NAME"
-while [ ! -f "$FILE" ]; do
-	sleep 1
-done
-echo "Completed waiting for $NAME"
+for name in "$@"; do
+	echo "Waiting for ${name}"
+	FILE=${dir}/${name}
+	while [ ! -f "$FILE" ]; do
+		sleep 1
+	done
+	echo "Completed waiting for ${name}"
+done;

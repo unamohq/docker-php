@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
+set -e
+
 usage()
 {
     cat << USAGE >&2
 Usage:
-    monitor-notify name
+    monitor-notify name ...
 USAGE
     exit 1
 }
 
-if [ $# -ne 1 ]; then
+if [ $# -lt 1 ]; then
 	usage
 fi
 
-NAME=$1
-FILE=/monitor/${NAME}
-if [ -f "$FILE" ]; then
-	echo "Already notified"
-	exit 1
-fi
+dir=/monitor
 
-echo "Notified $NAME"
-touch $FILE
+for name in "$@"; do
+	file=${dir}/${name}
+	touch $file
+	echo "Notified ${name}"
+done;
