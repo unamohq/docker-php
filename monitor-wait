@@ -13,7 +13,7 @@ if [ $# -ne 1 ]; then
 fi
 
 NAME=$1
-FILE=/Users/marcinkniazuk/Documents/tmp/monitor/${NAME}
+FILE=/monitor/${NAME}
 if [ -f "$FILE" ]; then
 	echo "Already notified"
 	exit 1
