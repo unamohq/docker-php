@@ -4,12 +4,8 @@ RUN apt-get update \
     && mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && apt-get install -y wget gcc cmake g++ make autoconf build-essential python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip
 
-RUN mkdir /tmp/wait-for-it \
-    && wget https://github.com/vishnubob/wait-for-it/archive/54d1f0bfeb6557adf8a3204455389d0901652242.zip -O wait-for-it.zip \
-    && unzip wait-for-it.zip \
-    && mv wait-for-it-54d1f0bfeb6557adf8a3204455389d0901652242/wait-for-it.sh /bin/wait-for-it \
-    && rm -r /tmp/wait-for-it \
-    && chmod a+x /bin/wait-for-it
+COPY wait-for-it.sh /bin/wait-for-it
+RUN chmod a+x /bin/wait-for-it
 
 RUN docker-php-ext-install bcmath pdo_pgsql pdo_mysql sockets zip
 
