@@ -17,7 +17,7 @@ fi
 dir=/monitor
 name=$1
 file=${dir}/${name}
-if [ -f "$FILE" ]; then
+if [ -f "$file" ]; then
 	echo "Succesfully tested ${name}"
 	exit 0
 else
