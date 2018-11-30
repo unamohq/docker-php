@@ -14,6 +14,10 @@ RUN pecl install igbinary \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable igbinary
 
+RUN pecl install mongodb \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable mongodb
+
 RUN mkdir -p /tmp/pear \
     && cd /tmp/pear \
     && pecl bundle redis \

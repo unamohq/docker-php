@@ -1,7 +1,7 @@
 # docker-php
 
 Official php:7.2-stretch image with some extras:
-- PHP extensions: `bcmath`, `pdo_pgsql`, `pdo_mysql`, `sockets`, `zip`, `xdebug`, `igbinary`, `redis`
+- PHP extensions: `bcmath`, `pdo_pgsql`, `pdo_mysql`, `sockets`, `zip`, `xdebug`, `igbinary`, `redis`, `mongodb`
 - Python
 - unzip
 - Git
