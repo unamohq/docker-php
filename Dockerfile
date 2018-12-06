@@ -18,6 +18,10 @@ RUN pecl install mongodb \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable mongodb
 
+RUN pecl install gender \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable gender
+
 RUN mkdir -p /tmp/pear \
     && cd /tmp/pear \
     && pecl bundle redis \
