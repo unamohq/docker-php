@@ -4,7 +4,7 @@ RUN apt-get update \
     && mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
     && apt-get install -y wget gcc cmake g++ make autoconf build-essential python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip
 
-RUN docker-php-ext-install bcmath pdo_pgsql pdo_mysql sockets zip
+RUN docker-php-ext-install bcmath pdo_pgsql pdo_mysql sockets zip pcntl
 
 RUN pecl install xdebug \
     && rm -rf /tmp/pear \
