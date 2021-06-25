@@ -2,7 +2,22 @@ FROM php:7.3-cli-stretch
 
 RUN apt-get update \
     && mkdir -p /usr/share/man/man1 /usr/share/man/man7 \
-    && apt-get install -y wget gcc cmake g++ make autoconf build-essential python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip libzip-dev
+    && apt-get install -y wget gcc cmake g++ make autoconf build-essential python postgresql-client mariadb-client libpq-dev zlib1g-dev git unzip libzip-dev libcurl4 zlib1g openssl libssl1.1 libicu-dev libpq-dev libbrotli-dev autoconf g++ make gcc cmake libcurl4-openssl-dev libssl-dev wget
+
+RUN pecl install raphf \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable raphf \
+    && php -m | grep raphf
+
+RUN pecl install propro \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable propro \
+    && php -m | grep propro
+
+RUN pecl install pecl_http-3.2.4 \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable http \
+    && php -m | grep http
 
 RUN docker-php-ext-install bcmath pdo_pgsql pdo_mysql sockets zip pcntl
 
